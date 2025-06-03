@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{%static 'logo.png'%}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <title>Employee Dashboard (Appraisal Requests)</title>
+
+    <style>
+        #outer {
+            height: 735px;
+            width: 1520px;
+            background-image: url({% static 'background.jpg' %});
+        }
+
+        #navbar {
+            height: 50px;
+        }
+
+        #navtoggler {
+            border: none;
+        }
+
+        #nav-title {
+            margin-left: 180%;
+        }
+
+        .container-fluid ul {
+            margin-right: 2%;
+            list-style-type: none;
+        }
+
+        #body h1 {
+            font-family: calibri;
+            margin-top: 3%;
+            margin-left: 38%;
+        }
+
+        #button {
+            border: none;
+            padding: 5px 15px;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 15px;
+            margin-left: 15px;
+            cursor: pointer;
+            border-radius: 5px 5px 5px 5px;
+            float: left;
+            background-image: url({% static 'background.jpg' %});
+            background-size: cover;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <!-- outer start -->
+        <div id="navbar">
+            <!-- navbar start -->
+            <nav class="navbar bg-body-tertiary fixed-top">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" id="navtoggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            <a class="navbar-brand" id="nav-title" href="#">
+                                <img src="{% static 'logo.png' %}" alt="Logo" width="30" height="30"
+                                    class="d-inline-block align-text-top">
+                                &nbsp;
+                                Employee Dashboard
+                            </a>
+                        </span>
+                    </button>
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h4 class="offcanvas-title" id="offcanvasNavbarLabel">Dashboard Menu</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body" id="dashmenu">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'employeeapp:employee_index' %}">Employee Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'employeeapp:employee_details' %}">Details</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Appraisal Requests
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item active"
+                                                href="{% url 'employeeapp:employee_appmade' %}">Appraisal Made</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="{% url 'employeeapp:employee_appreceived' %}">Appraisal
+                                                Received</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Grievances & Queries
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item"
+                                                href="{% url 'employeeapp:employee_makegrievance' %}">Make Grievances</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="{% url 'employeeapp:employee_viewgrievance' %}">View Grievances</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'employeeapp:employee_doctor' %}">Doctor's
+                                        Panel</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" style="font-size: 20px;"><i class="fa-solid fa-user"></i>
+                                You &nbsp;
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'appraisalapp:index' %}"><i
+                                            class="fa-solid fa-right-from-bracket"></i> Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- navbar end -->
+        </div>
+
+        <div id="body">
+            <h1><b><u>Appraisal Requests Made</u></b></h1>
+            <br />
+            
+            <a href="{% url 'employeeapp:employee_appform' %}" id="button"><i class="fa-solid fa-plus"></i> Add new</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Appraisee User ID</th>
+                        <th scope="col">Appraisee Name</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Performance Rating Given(Out of 5)</th>
+                        <th scope="col">Comments</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    {% for a in appdetails %}
+                    <tr>
+                        <td>{{a.appraiseeuserid}}</td>
+                        <td>{{a.name}}</td>
+                        <td>{{a.department}}</td>
+                        <td>{{a.designation}}</td>
+                        <td>{{a.performancerating}}</td>
+                        <td>{{a.comments}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- outer end -->
+    </div>
+</body>
+
+</html>

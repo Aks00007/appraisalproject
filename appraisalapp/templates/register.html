@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>360" Appraisal System</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{%static 'logo.png'%}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <style>
+        #outer {
+            height: 735px;
+            width: 1520px;
+            background-image: url(../static/background.jpg);
+        }
+
+        #nav ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style-type: none;
+    }
+
+    #nav ul li {
+      font-family: calibri;
+      margin-right: 100px;
+      margin-top: 15px;
+    }
+
+        #nav ul li a {
+            padding: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            color: black;
+        }
+
+        #body {
+            height: 580px;
+            width: 1370px;
+            margin-top: 3%;
+            margin-left: 5%;
+            border-radius: 15px 15px 15px 15px;
+            //background-color: blue;
+        }
+
+        #left {
+            height: 580px;
+            width: 550px;
+            border-radius: 15px 0px 0px 15px;
+            background-image: url(../static/background.jpg);
+            background-size: cover;
+            float: left;
+        }
+
+        #left img {
+            height: 300px;
+            width: 300px;
+            margin-top: 25%;
+            margin-left: 22%;
+        }
+
+        #right {
+            height: 580px;
+            width: 820px;
+            border-radius: 0px 15px 15px 0px;
+            padding-top: 5px;
+            background-color: white;
+            float: left;
+        }
+
+        #register-text {
+            font-size: 30px;
+            font-family: calibri;
+            text-align: center;
+        }
+
+        #register-subtext {
+            font-family: calibri;
+            text-align: center;
+            color: grey;
+        }
+
+        #right hr {
+            width: 280px;
+            margin-left: 90px;
+        }
+
+        .box {
+            width: 280px;
+            border: none;
+            margin-left: 90px;
+            color: grey;
+        }
+
+        #buttons {
+            height: 40px;
+            width: 700px;
+            border: 1px solid white;
+            border-radius: 8px 8px 8px 8px;
+            display: flex;
+            margin-bottom: 1%;
+        }
+
+        #registration {
+            height: 40px;
+            width: 200px;
+            margin-left: 25%;
+            background-image: url(../static/background.jpg);
+            background-size: cover;
+            border: 1px solid white;
+            border-radius: 8px 8px 8px 8px;
+            float: left;
+            align-items: center;
+        }
+
+        #reset {
+            height: 40px;
+            width: 200px;
+            margin-left: 10%;
+            background-image: url(../static/background.jpg);
+            background-size: cover;
+            border: 1px solid white;
+            border-radius: 8px 8px 8px 8px;
+            float: left;
+        }
+
+        .error {
+            color: red;
+        }
+
+
+        input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <!-- outer start -->
+
+        <div id="navbar">
+            <!-- navbar start -->
+            <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid" id="nav">
+                    <a class="navbar-brand" href="#">
+                        <img src="../static/logo.png" alt="Logo" width="30" height="30"
+                            class="d-inline-block align-text-top">
+                        &nbsp;
+                        360" Appraisal System
+                    </a>
+                    <ul>
+                        <li><a href="{% url 'appraisalapp:index' %}">Home</a></li>
+                        <li><a href="{% url 'appraisalapp:register' %}">Register</a></li>
+                        <li><a href="{% url 'appraisalapp:login' %}">Login</a></li>
+                        <li><a href="{% url 'appraisalapp:about' %}">About Us</a></li>
+                        <li><a href="{% url 'appraisalapp:contact' %}">Contact Us</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- navbar end -->
+        </div>
+
+        <div id="body">
+            <!-- body start -->
+            <div id="left">
+                <img src="../static/registeration.png" alt="registration">
+            </div>
+
+            <div id="right">
+                <form method="POST" name="myForm" onsubmit="return validateForm()">
+                    {% csrf_token %}
+                    <table>
+                        <p id="register-text"><b>Registration</b></p>
+                        <p id="register-subtext">Please complete to create your account.</p>
+                        <br />
+                        <tr>
+                            <td>
+                                <input type="text" placeholder="Name" class="box" name="name" />
+                                <hr />
+                            </td>
+                            <td>
+                                <select name="gender" class="box">
+                                    <option selected="" disabled="disabled">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="others">Others</option>
+                                </select>
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" placeholder="Father's Name" class="box" name="fname" />
+                                <hr />
+                            </td>
+                            <td>
+                                <input type="text" placeholder="Mother's Name" class="box" name="mname" />
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="email" placeholder="Email ID" class="box" name="email" />
+                                <hr />
+                            </td>
+                            <td>
+                                <input type="number" placeholder="Contact No." class="box" name="contact" maxlength="10" />
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="date" placeholder="DOB" class="box" name="dob" />
+                                <hr />
+                            </td>
+                            <td>
+                                <input type="text" placeholder="Address" class="box" name="address" />
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" placeholder="Department" class="box" name="department" />
+                                <hr />
+                            </td>
+                            <td>
+                                <input type="text" placeholder="Designation" class="box" name="designation" />
+                                <hr />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" placeholder="Select User ID" class="box" name="userid" />
+                                <hr />
+                            </td>
+                            <td>
+                                <input type="password" placeholder="Enter Password" class="box" name="password" />
+                                <hr />
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="buttons">
+                        <input type="submit" value="Register" id="registration" />
+                        <input type="reset" value="Reset" id="reset" />
+                    </div>
+                    <p style="color: black;">
+                        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                        Already a member?
+                        <a href="{% url 'appraisalapp:login' %}" style="color: grey; text-decoration: none">Login</a>
+                    </p>
+                </form>
+            </div>
+            <!-- body end -->
+</body>
+
+<script>
+    function validateForm() {
+        // Get the form elements
+        let form = document.forms["myForm"];
+        let name = form["name"].value;
+        let gender = form["gender"].value;
+        let fname = form["fname"].value;
+        let mname = form["mname"].value;
+        let email = form["email"].value;
+        let contact = form["contact"].value;
+        let dob = form["dob"].value;
+        let address = form["address"].value;
+        let department = form["department"].value;
+        let designation = form["designation"].value;
+        let userid = form["userid"].value;
+        let password = form["password"].value;
+
+        // Initialize validation status and error messages
+        let valid = true;
+        let errorMessages = [];
+
+        // Name validation
+        if (name === "") {
+            errorMessages.push("Name is required");
+            valid = false;
+        } else if (/\d/.test(name)) {
+            errorMessages.push("Name cannot contain numbers");
+            valid = false;
+        }
+
+        // Gender validation
+        if (gender === "Gender") {
+            errorMessages.push("Gender is required");
+            valid = false;
+        }
+
+        // Father's name validation
+        if (fname === "") {
+            errorMessages.push("Father's name is required");
+            valid = false;
+        } else if (/\d/.test(fname)) {
+            errorMessages.push("Father's name cannot contain numbers");
+            valid = false;
+        }
+
+        // Mother's name validation
+        if (mname === "") {
+            errorMessages.push("Mother's name is required");
+            valid = false;
+        } else if (/\d/.test(mname)) {
+            errorMessages.push("Mother's name cannot contain numbers");
+            valid = false;
+        }
+
+        // Email validation
+        if (email === "") {
+            errorMessages.push("Email ID is required");
+            valid = false;
+        } else {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                errorMessages.push("Invalid email format");
+                valid = false;
+            }
+        }
+
+        // Contact validation
+        if (contact === "") {
+            errorMessages.push("Contact number is required");
+            valid = false;
+        } else {
+            const contactPattern = /^\d{10}$/;
+            if (!contactPattern.test(contact)) {
+                errorMessages.push("Contact number must be 10 digits");
+                valid = false;
+            }
+        }
+
+        // Date of birth validation
+        if (dob === "") {
+            errorMessages.push("Date of birth is required");
+            valid = false;
+        }
+
+        // Address validation
+        if (address === "") {
+            errorMessages.push("Address is required");
+            valid = false;
+        }
+
+        // Department validation
+        if (department === "") {
+            errorMessages.push("Department is required");
+            valid = false;
+        } else if (/\d/.test(department)) {
+            errorMessages.push("Department name cannot contain numbers");
+            valid = false;
+        }
+
+        // Designation validation
+        if (designation === "") {
+            errorMessages.push("Designation is required");
+            valid = false;
+        } else if (/\d/.test(designation)) {
+            errorMessages.push("Designation cannot contain numbers");
+            valid = false;
+        }
+
+        // User ID validation
+        if (userid === "") {
+            errorMessages.push("User ID is required");
+            valid = false;
+        }
+
+        // Password validation
+        if (password === "") {
+            errorMessages.push("Password is required");
+            valid = false;
+        }
+
+        if (!valid) {
+            alert("The following errors occurred:\n" + errorMessages.join("\n"));
+        }
+
+        return valid;
+    }
+</script>
+
+</html>

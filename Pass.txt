@@ -1,0 +1,11 @@
+Django-Administrator
+Username- Aayush
+Password- 12345
+
+Login (Admin)
+Username- aks
+Password- 12345
+
+Login (Employee1)
+Username- aks007
+Password- 12345

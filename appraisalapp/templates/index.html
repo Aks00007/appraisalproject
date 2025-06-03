@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>360" Appraisal System</title>
+  <link href="bootstrap.css" rel="stylesheet">
+  <link rel="shortcut icon" href="{%static 'logo.png'%}" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="bootstrap.bundle.js"></script>
+
+  <style>
+    #outer {
+      height: 735px;
+      width: 1520px;
+      background-image: url(../static/background.jpg);
+    }
+
+    #nav ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style-type: none;
+    }
+
+    #nav ul li {
+      font-family: calibri;
+      margin-right: 100px;
+      margin-top: 15px;
+    }
+
+    #nav ul li a {
+      padding: 20px;
+      font-size: 20px;
+      text-decoration: none;
+      color: black;
+    }
+
+    #body {
+      height: 670px;
+      width: 1535px;
+      //background-color: blue;
+    }
+
+    #left {
+      height: 450px;
+      width: 800px;
+      padding-top: 5%;
+      padding-left: 5%;
+      float: left;
+      //background-color: red;
+    }
+
+    #right {
+      height: 450px;
+      width: 735px;
+      //background-color: yellow;
+      float: left;
+    }
+
+    #employee {
+      height: 400px;
+      width: 500px;
+      margin-top: 10%;
+      margin-left: 15%;
+      background-image: url(../static/employee.png);
+      background-repeat: no-repeat;
+      //background-color: aqua;
+    }
+
+    #brands {
+      height: 190px;
+      width: 94vw;
+      padding-top: 4%;
+      margin-left: 5%;
+      display: flex;
+      justify-content: space-around;
+      float: left;
+      //background-color: brown;
+    }
+
+    .icon {
+      margin-left: 20%;
+    }
+
+    #report {
+      height: 150px;
+      width: 850px;
+      margin-top: 35%;
+      margin-left: 20%;
+      //background-color: aqua;
+    }
+
+    #report p {
+      font-size: 50px;
+      font-family: calibri;
+    }
+
+    #report_left {
+      height: 500px;
+      width: 650px;
+      background-size: contain;
+      background-image: url(../static/report\ summary.png);
+      margin-top: 2%;
+      margin-left: 3%;
+      float: left;
+    }
+
+    #report_right {
+      height: 500px;
+      width: 650px;
+      margin-right: 5%;
+      float: right;
+    }
+
+    #report-down {
+      height: 500px;
+      width: 1000px;
+      border-radius: 30px 30px 30px 30px;
+      margin-top: 40%;
+      margin-left: 17%;
+      background-image: url(../static/background.jpg);
+    }
+
+    #rep-left {
+      height: 400px;
+      width: 400px;
+      margin-top: 6%;
+      margin-left: 6%;
+      float: left;
+      background-image: url(../static/report_download.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    #email {
+      height: 50px;
+      width: 330px;
+      border: 1px solid white;
+      border-radius: 7px 0px 0px 7px;
+    }
+
+    #view {
+      height: 60px;
+      width: 300px;
+      color: white;
+      border: 1px solid white;
+      background-color: black;
+      border-radius: 7px 7px 7px 7px;
+      margin-left: 5%;
+    }
+
+    #self {
+      height: 150px;
+      width: 1000px;
+      margin-top: 5%;
+      margin-left: 18%;
+    }
+
+    #self p {
+      font-size: 50px;
+      font-family: calibri;
+      text-align: center;
+    }
+
+    #self_left {
+      height: 500px;
+      width: 650px;
+      background-size: contain;
+      background-image: url(../static/self-awareness.png);
+      margin-top: 2%;
+      margin-left: 3%;
+      float: left;
+    }
+
+    #self_right {
+      margin-right: 5%;
+    }
+
+    #footer {
+      height: 500px;
+      width: 1350px;
+      margin-top: 5%;
+      margin-left: 6%;
+      border-radius: 30px 30px 0px 0px;
+      background-image: url(../static/background.jpg);
+    }
+
+    #para {
+      font-size: 70px;
+      margin-left: 27%;
+    }
+
+    #email-1 {
+      height: 60px;
+      width: 450px;
+      border: 1px solid white;
+      border-radius: 7px 0px 0px 7px;
+      margin-left: 26%;
+    }
+
+    #signup {
+      height: 62px;
+      width: 200px;
+      color: white;
+      border: 1px solid white;
+      background-color: black;
+      border-radius: 0px 7px 7px 0px;
+    }
+
+    #footer-text {
+      font-size: 20px;
+      margin-top: 7%;
+      margin-left: 22%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outer">
+    <!-- outer start -->
+
+    <div id="navbar">
+      <!-- navbar start -->
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid" id="nav">
+          <a class="navbar-brand" href="#">
+            <img src="../static/logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            &nbsp;
+            360" Appraisal System
+          </a>
+          <ul>
+            <li><a href="{% url 'appraisalapp:index' %}">Home</a></li>
+            <li><a href="{% url 'appraisalapp:register' %}">Register</a></li>
+            <li><a href="{% url 'appraisalapp:login' %}">Login</a></li>
+            <li><a href="{% url 'appraisalapp:about' %}">About Us</a></li>
+            <li><a href="{% url 'appraisalapp:contact' %}">Contact Us</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- navbar end -->
+    </div>
+
+    <div id="body">
+      <!-- body start -->
+      <div id="left"> <br />
+        <p style="font-size: 80px;">360 Degree <br />
+          Appraisal System</p>
+        Embracing All Perspectives for Holistic Growth <br /> <br />
+        <hr />
+      </div>
+      <div id="right">
+        <div id="employee">
+
+        </div>
+      </div>
+      <div id="brands">
+        <p style="font-size: 25px; font-family:calibri;"><b>Trusted By:</b></p>
+          <marquee direction="right" scrollamount="12" behavior="scroll" truespeed="true">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+            <img src="../static/brand1.png" class="icon">
+            <img src="../static/brand5.png" class="icon">
+            <img src="../static/brand4.png" class="icon">
+            <img src="../static/brand2.png" class="icon">
+          </marquee>
+      </div>
+      <br /><br /><br /><br /><br /><br /><br /><br />
+
+      <div id="report">
+        <p><b>Customize 360 Reports with a few clicks</b></p>
+      </div>
+      <div id="report_left"></div>
+      <div id="report_right">
+        <h4>Tailored Feedback Sections:</h4>
+        <br />
+        <p>Easily select and organize specific competencies, behaviors, and skills relevant to your organization's needs, ensuring the feedback aligns with your unique performance metrics and development goals.</p>
+        <br /><br />
+        <h4>Customizable Visuals and Charts:</h4>
+        <br />
+        <p>Quickly adjust visual elements such as graphs, charts, and rating scales to match your preferred presentation style, enhancing the clarity and impact of the feedback provided to employees.</p>
+        <br /><br />
+        <h4>Personalized Development Plans:</h4>
+        <br />
+        <p>Generate individualized development plans based on the feedback, allowing managers to focus on key areas of improvement and set specific, actionable goals for each employee.</p>
+      </div>
+      <br /><br />
+
+      <div id="report-down">
+        <div id="rep-left">
+
+        </div>
+        <br /><br /><br /><br />
+        <p style="font-size: 40px;"><b>View the <br />360 Degree Appraisal Sample Report</b></p>
+        <br />
+        <a href="../static/360-reportsample.jpg"><input type="button" , value="View Sample Report" id="view" /></a>
+      </div>
+
+      <div id="self">
+        <p><b>Enhance self awareness of each employee with in-depth insights.</b></p>
+      </div>
+      <br />
+      <div id="self_left"></div>
+      <div id="self_right">
+        <br />
+        <h4>Area of Improvement</h4>
+        <br />
+        <p>Improvements could focus on refining feedback quality, enhancing rater training to mitigate biases, and implementing structured follow-up for effective development planning.</p>
+        <br /><br />
+        <h4>Hidden Strengths</h4>
+        <br />
+        <p>Hidden strengths are unrecognized talents or qualities individuals possess, revealed through feedback from peers, supervisors, and subordinates. These strengths, such as strong communication skills or innovative thinking, often go unnoticed in traditional evaluations but can be vital for personal and professional growth when identified and nurtured.</p>
+        <br /><br />
+        <h4>Blind Spots</h4>
+        <br />
+        <p>Blind spots arise from potential biases in feedback, incomplete perspectives from raters, and a lack of contextual understanding. These blind spots can hinder the accuracy and fairness of evaluations, impacting the effectiveness of performance assessments and development initiatives.</p>
+      </div>
+
+      <div id="footer">
+        <br /><br /><br /><br />
+        <p id="para"><b>See it, to believe it.</b></p> <br />
+        <input type="email" , placeholder="Enter your Email" id="email-1" />
+        <a href="{% url 'appraisalapp:register' %}" id="signup"><input type="button" value="Signup for Free" id="signup" /></a>
+        <div id="footer-text">
+          <p>&copy; copyright 2024-2025 all rights reserved, designed and developed by <i>Aayush Kumar Singh</i></p>
+        </div>
+      </div>
+      <!-- body end -->
+    </div>
+    <!-- outer end -->
+  </div>
+
+</body>
+
+</html>
